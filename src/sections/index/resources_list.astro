@@ -1,0 +1,57 @@
+---
+import ResourceCard from "@/components/ui/cards/resource_card.astro";
+const resources = [
+  {
+    title: "Icons",
+    description: "Awesome libs and pages to use icons in your webs.",
+    url: "/resources/icons",
+  },
+  {
+    title: "Fonts",
+    description: "Useful font libraries and tools for better typography.",
+    url: "/resources/fonts",
+  },
+  {
+    title: "Colors",
+    description: "Color palettes, generators, and accessibility tools.",
+    url: "/resources/colors",
+  },
+  {
+    title: "Images",
+    description: "Sources for free and high-quality images and illustrations.",
+    url: "/resources/images",
+  },
+  {
+    title: "CSS Tools",
+    description:
+      "Generators, frameworks, and utilities to enhance your styles.",
+    url: "/resources/css-tools",
+  },
+  {
+    title: "UI Components",
+    description: "Prebuilt components and UI kits to speed up your workflow.",
+    url: "/resources/ui-components",
+  },
+];
+---
+
+<section
+  id="resources"
+  class="min-h-screen px-2 py-6 flex flex-col items-center justify-center gap-12"
+>
+  <header class="text-center space-y-6 max-w-5xl">
+    <h2 class="text-5xl font-bold text-purple-100 drop-shadow-md">
+      Curated Web Dev Resources
+    </h2>
+    <h3 class="text-lg text-balance leading-relaxed">
+      Explore a growing library of carefully selected tools, code snippets,
+      design patterns, and UI components to streamline your web development
+      workflow.
+    </h3>
+  </header>
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto"
+  >
+    {resources.map((resource) => <ResourceCard {...resource} />)}
+  </div>
+</section>
