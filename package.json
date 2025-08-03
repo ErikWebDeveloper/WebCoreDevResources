@@ -1,5 +1,6 @@
 {
-  "name": "core-dev-resources",
+  "name": "web-core-dev-resources",
+  "displayName": "WebCoreDevResources",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
