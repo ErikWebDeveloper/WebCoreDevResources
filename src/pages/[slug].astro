@@ -1,0 +1,37 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Section from "@/components/section.astro";
+import Card from "@/components/card.astro";
+import resources from "@/data/resources";
+
+// Parámetro de la URL
+const { slug } = Astro.params;
+
+// Encuentra el recurso correspondiente
+const sectionData = resources.find((section) => section.slug === slug);
+
+// Si no hay recurso, lanza error o muestra 404
+if (!sectionData) {
+  throw new Error(`No resource section found for slug: ${slug}`);
+}
+
+// Datos de la sección
+const { title, description, resources: items } = sectionData;
+const titleSlug = slug.charAt(0).toUpperCase() + slug.slice(1).toLowerCase();
+
+export async function getStaticPaths() {
+  return resources.map((section) => ({
+    params: { slug: section.slug },
+  }));
+}
+---
+
+<Layout title={`${titleSlug} - Web Core Dev Resourses`}>
+  <Section title={title} description={description}>
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto"
+    >
+      {items.map((resource) => <Card {...resource} />)}
+    </div>
+  </Section>
+</Layout>
